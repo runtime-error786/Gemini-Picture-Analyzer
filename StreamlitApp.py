@@ -31,4 +31,10 @@ def send_to_gemini(image, question):
     response = model.generate_content([question, image])
     return response.text
 
-
+if st.button('Submit Question') and user_question and uploaded_file is not None:
+    st.write(f'Question asked: {user_question}')
+    try:
+        response = send_to_gemini(pil_image, user_question)
+        st.write('Response from Gemini:', response)
+    except Exception as e:
+        st.write('Error:', e)
