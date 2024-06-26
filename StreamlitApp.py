@@ -26,3 +26,9 @@ if uploaded_file is not None:
 # Input field for user question
 user_question = st.text_input('Ask a question to the image uploader:')
 
+def send_to_gemini(image, question):
+    # Send the image and question to Gemini API
+    response = model.generate_content([question, image])
+    return response.text
+
+
